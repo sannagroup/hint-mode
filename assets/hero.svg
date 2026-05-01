@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 480" role="img" aria-label="link-hints demo: a UI with small orange labels over buttons and inputs, with the F key pressed">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fbf9f4"/>
+      <stop offset="1" stop-color="#f1ece1"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#fafaf7"/>
+    </linearGradient>
+    <filter id="cardShadow" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#382b1c" flood-opacity="0.08"/>
+    </filter>
+    <filter id="badgeShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="#000" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="480" fill="url(#bg)"/>
+
+  <g filter="url(#cardShadow)">
+    <rect x="64" y="64" rx="14" ry="14" width="1072" height="352" fill="url(#card)" stroke="#e3decd" stroke-width="1"/>
+  </g>
+
+  <rect x="64" y="64" rx="14" ry="14" width="1072" height="44" fill="#f4f0e6" stroke="#e3decd" stroke-width="1"/>
+  <rect x="64" y="100" width="1072" height="8" fill="#f4f0e6"/>
+  <circle cx="92" cy="86" r="6" fill="#f7baa3"/>
+  <circle cx="112" cy="86" r="6" fill="#f5d49a"/>
+  <circle cx="132" cy="86" r="6" fill="#bfd9b8"/>
+  <text x="600" y="91" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" fill="#7e6f55">app.example.com</text>
+
+  <rect x="80" y="124" width="220" height="276" rx="10" fill="#faf6ec" stroke="#ece4cf" stroke-width="1"/>
+  <text x="100" y="156" font-family="-apple-system,Segoe UI,Roboto,sans-serif" font-size="14" font-weight="700" fill="#3a2e1c">Admin</text>
+
+  <g font-family="-apple-system,Segoe UI,Roboto,sans-serif" font-size="14" fill="#3a2e1c">
+    <rect x="92" y="180" width="196" height="36" rx="8" fill="#efe7d2"/>
+    <circle cx="110" cy="198" r="5" fill="#3a2e1c"/>
+    <text x="130" y="203">Dashboard</text>
+
+    <circle cx="110" cy="244" r="5" fill="#a89678"/>
+    <text x="130" y="249" fill="#5a4d36">Organizations</text>
+
+    <circle cx="110" cy="280" r="5" fill="#a89678"/>
+    <text x="130" y="285" fill="#5a4d36">Members</text>
+
+    <circle cx="110" cy="316" r="5" fill="#a89678"/>
+    <text x="130" y="321" fill="#5a4d36">Reports</text>
+
+    <circle cx="110" cy="352" r="5" fill="#a89678"/>
+    <text x="130" y="357" fill="#5a4d36">Settings</text>
+  </g>
+
+  <text x="324" y="158" font-family="-apple-system,Segoe UI,Roboto,sans-serif" font-size="20" font-weight="700" fill="#2a2010">Annual reports</text>
+  <text x="324" y="184" font-family="-apple-system,Segoe UI,Roboto,sans-serif" font-size="13" fill="#7c6e54">Press F to navigate by keyboard</text>
+
+  <g font-family="-apple-system,Segoe UI,Roboto,sans-serif" font-size="14" font-weight="600">
+    <rect x="324" y="220" width="118" height="40" rx="8" fill="#1f1a0e"/>
+    <text x="383" y="245" text-anchor="middle" fill="#fffbef">Save draft</text>
+
+    <rect x="458" y="220" width="118" height="40" rx="8" fill="#ffffff" stroke="#d8d2bf"/>
+    <text x="517" y="245" text-anchor="middle" fill="#3a2e1c">Cancel</text>
+
+    <rect x="592" y="220" width="118" height="40" rx="8" fill="#1f8f4a"/>
+    <text x="651" y="245" text-anchor="middle" fill="#ffffff">Publish</text>
+  </g>
+
+  <g font-family="-apple-system,Segoe UI,Roboto,sans-serif" font-size="13" fill="#7c6e54">
+    <rect x="324" y="284" width="384" height="40" rx="8" fill="#ffffff" stroke="#d8d2bf"/>
+    <text x="340" y="308">Search organizations…</text>
+
+    <rect x="724" y="284" width="124" height="40" rx="8" fill="#ffffff" stroke="#d8d2bf"/>
+    <text x="740" y="308">2026</text>
+    <path d="M826 302 l8 8 l8 -8" fill="none" stroke="#7c6e54" stroke-width="1.5"/>
+  </g>
+
+  <g font-family="-apple-system,Segoe UI,Roboto,sans-serif" font-size="13" fill="#3a2e1c">
+    <rect x="324" y="346" width="252" height="40" rx="8" fill="#ffffff" stroke="#ece4cf"/>
+    <text x="340" y="370">Acme AS</text>
+
+    <rect x="588" y="346" width="252" height="40" rx="8" fill="#ffffff" stroke="#ece4cf"/>
+    <text x="604" y="370">Globex Holdings</text>
+
+    <rect x="852" y="346" width="252" height="40" rx="8" fill="#ffffff" stroke="#ece4cf"/>
+    <text x="868" y="370">Initech AS</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="700" fill="#fff">
+    <g filter="url(#badgeShadow)"><rect x="84" y="190" width="22" height="14" rx="3" fill="#e96a32"/><text x="95" y="200" text-anchor="middle">DA</text></g>
+    <g filter="url(#badgeShadow)"><rect x="84" y="236" width="22" height="14" rx="3" fill="#e96a32"/><text x="95" y="246" text-anchor="middle">OR</text></g>
+    <g filter="url(#badgeShadow)"><rect x="84" y="272" width="22" height="14" rx="3" fill="#e96a32"/><text x="95" y="282" text-anchor="middle">ME</text></g>
+    <g filter="url(#badgeShadow)"><rect x="84" y="308" width="22" height="14" rx="3" fill="#e96a32"/><text x="95" y="318" text-anchor="middle">RP</text></g>
+    <g filter="url(#badgeShadow)"><rect x="84" y="344" width="22" height="14" rx="3" fill="#e96a32"/><text x="95" y="354" text-anchor="middle">SE</text></g>
+
+    <g filter="url(#badgeShadow)"><rect x="316" y="232" width="22" height="14" rx="3" fill="#e96a32"/><text x="327" y="242" text-anchor="middle">SD</text></g>
+    <g filter="url(#badgeShadow)"><rect x="450" y="232" width="22" height="14" rx="3" fill="#e96a32"/><text x="461" y="242" text-anchor="middle">CA</text></g>
+    <g filter="url(#badgeShadow)"><rect x="584" y="232" width="22" height="14" rx="3" fill="#e96a32"/><text x="595" y="242" text-anchor="middle">PB</text></g>
+
+    <g filter="url(#badgeShadow)"><rect x="316" y="296" width="22" height="14" rx="3" fill="#e96a32"/><text x="327" y="306" text-anchor="middle">SC</text></g>
+    <g filter="url(#badgeShadow)"><rect x="716" y="296" width="22" height="14" rx="3" fill="#e96a32"/><text x="727" y="306" text-anchor="middle">YR</text></g>
+
+    <g filter="url(#badgeShadow)"><rect x="316" y="358" width="22" height="14" rx="3" fill="#e96a32"/><text x="327" y="368" text-anchor="middle">AC</text></g>
+    <g filter="url(#badgeShadow)"><rect x="580" y="358" width="22" height="14" rx="3" fill="#e96a32"/><text x="591" y="368" text-anchor="middle">GX</text></g>
+    <g filter="url(#badgeShadow)"><rect x="844" y="358" width="22" height="14" rx="3" fill="#e96a32"/><text x="855" y="368" text-anchor="middle">IN</text></g>
+  </g>
+
+  <g transform="translate(1014, 414)">
+    <rect x="0" y="0" width="86" height="36" rx="8" fill="#1f1a0e" stroke="#1f1a0e"/>
+    <text x="14" y="22" font-family="-apple-system,Segoe UI,Roboto,sans-serif" font-size="11" fill="#cdc1a4">Press</text>
+    <rect x="50" y="6" width="22" height="22" rx="5" fill="#fffbef" stroke="#3a2e1c" stroke-width="1.5"/>
+    <text x="61" y="22" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="700" fill="#1f1a0e">F</text>
+  </g>
+</svg>

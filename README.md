@@ -2,18 +2,7 @@
 
 > Vimium-style keyboard link-hint navigation, embedded into any web page. Press `f`, see labels appear over every clickable element, type a label to click it.
 
-```text
-┌──────────────────────────────────────────┐
-│  ┌──┐                                    │
-│  │AS│ Save  ┌──┐ Cancel  ┌──┐ Open       │
-│  └──┘       │HD│         │OV│            │
-│             └──┘         └──┘            │
-│  ┌──┐                                    │
-│  │FI│ ☐ Search…                          │
-│  └──┘                                    │
-└──────────────────────────────────────────┘
-        Press F to activate · Esc to cancel
-```
+<p align="center"><img src="https://raw.githubusercontent.com/sannagroup/link-hints/main/assets/hero.svg" alt="link-hints demo: orange link-hint badges over UI elements with the F key pressed"></p>
 
 > **Status:** experimental. APIs may change before 1.0. No SLA on issues.
 
