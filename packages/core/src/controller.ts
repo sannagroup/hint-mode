@@ -3,7 +3,7 @@ import { Emitter } from './emitter';
 import { assignHintLabels } from './hint-labels';
 import { getStableElementKey } from './stable-element-key';
 import { performTargetAction } from './click-simulator';
-import type { HintModeOptions, HintModeState } from './types';
+import type { LinkHintsOptions, LinkHintsState } from './types';
 
 const TEXT_INPUT_TYPES_TO_IGNORE = ['button', 'submit', 'reset', 'checkbox', 'radio'];
 
@@ -29,13 +29,13 @@ const getRouteKey = (): string => {
  * dispatching events and inspecting the document. The badge renderer
  * subscribes to state changes and updates the DOM separately.
  */
-export class HintModeController {
-  private state: HintModeState = {
+export class LinkHintsController {
+  private state: LinkHintsState = {
     status: 'idle',
     hints: new Map(),
     typedPrefix: ''
   };
-  private readonly emitter = new Emitter<HintModeState>();
+  private readonly emitter = new Emitter<LinkHintsState>();
 
   /**
    * Per-route memory of `stableElementKey -> label` from previous
@@ -47,7 +47,7 @@ export class HintModeController {
   private keydownListener: ((event: KeyboardEvent) => void) | undefined;
   private layoutShiftListener: (() => void) | undefined;
 
-  constructor(private readonly options: Required<HintModeOptions>) {}
+  constructor(private readonly options: Required<LinkHintsOptions>) {}
 
   start(): void {
     if (typeof window === 'undefined') return;
@@ -67,11 +67,11 @@ export class HintModeController {
     this.emitter.clear();
   }
 
-  getState(): HintModeState {
+  getState(): LinkHintsState {
     return this.state;
   }
 
-  subscribe(listener: (state: HintModeState) => void): () => void {
+  subscribe(listener: (state: LinkHintsState) => void): () => void {
     return this.emitter.subscribe(listener);
   }
 
@@ -222,7 +222,7 @@ export class HintModeController {
     this.layoutShiftListener = undefined;
   }
 
-  private setState(next: HintModeState): void {
+  private setState(next: LinkHintsState): void {
     this.state = next;
     this.emitter.emit(next);
   }

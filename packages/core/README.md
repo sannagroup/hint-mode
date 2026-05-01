@@ -1,6 +1,6 @@
-# hint-mode
+# link-hints
 
-> Vimium-style keyboard hint navigation, embedded into any web page. Press `f`, see labels appear over every clickable element, type a label to click it.
+> Vimium-style keyboard link-hint navigation, embedded into any web page. Press `f`, see labels appear over every clickable element, type a label to click it.
 
 ```text
 ┌──────────────────────────────────────────┐
@@ -19,7 +19,7 @@
 
 ## Why
 
-Power users build muscle memory. Adding Vimium-style hints into your app means accountants, admins, ops folk, and anyone else who lives in the keyboard can move several times faster — without you writing a single keyboard shortcut handler. Every visible button, link, and input gets one automatically.
+Power users build muscle memory. Adding Vimium-style link hints into your app means accountants, admins, ops folk, and anyone else who lives in the keyboard can move several times faster — without you writing a single keyboard shortcut handler. Every visible button, link, and input gets one automatically.
 
 Compared to running the [Vimium Chrome extension](https://github.com/philc/vimium):
 
@@ -31,10 +31,10 @@ Compared to running the [Vimium Chrome extension](https://github.com/philc/vimiu
 ## Install
 
 ```bash
-bun add @sannagroup/hint-mode
-# or: npm i @sannagroup/hint-mode
-# or: pnpm add @sannagroup/hint-mode
-# or: yarn add @sannagroup/hint-mode
+bun add @sannagroup/link-hints
+# or: npm i @sannagroup/link-hints
+# or: pnpm add @sannagroup/link-hints
+# or: yarn add @sannagroup/link-hints
 ```
 
 Zero dependencies. No framework lock-in.
@@ -42,10 +42,10 @@ Zero dependencies. No framework lock-in.
 ## Quick start (vanilla)
 
 ```ts
-import { createHintMode } from '@sannagroup/hint-mode';
-import '@sannagroup/hint-mode/style.css';
+import { createLinkHints } from '@sannagroup/link-hints';
+import '@sannagroup/link-hints/style.css';
 
-const hints = createHintMode();
+const hints = createLinkHints();
 
 // Press `f` anywhere on the page. Type a hint label to click. Esc cancels.
 // Call hints.dispose() when you're done (SPA route teardown, etc.).
@@ -55,21 +55,21 @@ That's it. The page is now hintable.
 
 ## Framework integration
 
-`hint-mode` is framework-free on purpose — wiring it into any UI library is two lines: call `createHintMode()` on mount, call `dispose()` on unmount. Pick the snippet for your framework.
+`link-hints` is framework-free on purpose — wiring it into any UI library is two lines: call `createLinkHints()` on mount, call `dispose()` on unmount. Pick the snippet for your framework.
 
 ### Svelte 5
 
 ```svelte
-<!-- src/lib/HintMode.svelte -->
+<!-- src/lib/LinkHints.svelte -->
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { createHintMode, type HintModeOptions } from '@sannagroup/hint-mode';
-  import '@sannagroup/hint-mode/style.css';
+  import { createLinkHints, type LinkHintsOptions } from '@sannagroup/link-hints';
+  import '@sannagroup/link-hints/style.css';
 
-  const props: HintModeOptions = $props();
+  const props: LinkHintsOptions = $props();
 
   onMount(() => {
-    const hints = createHintMode(props);
+    const hints = createLinkHints(props);
     return () => hints.dispose();
   });
 </script>
@@ -78,29 +78,29 @@ That's it. The page is now hintable.
 ```svelte
 <!-- Use it once, near the top of your app's layout -->
 <script lang="ts">
-  import HintMode from '$lib/HintMode.svelte';
+  import LinkHints from '$lib/LinkHints.svelte';
 </script>
 
-<HintMode />
+<LinkHints />
 ```
 
 ### React
 
 ```tsx
 import { useEffect } from 'react';
-import { createHintMode, type HintModeOptions } from '@sannagroup/hint-mode';
-import '@sannagroup/hint-mode/style.css';
+import { createLinkHints, type LinkHintsOptions } from '@sannagroup/link-hints';
+import '@sannagroup/link-hints/style.css';
 
-export const useHintMode = (options?: HintModeOptions): void => {
+export const useLinkHints = (options?: LinkHintsOptions): void => {
   useEffect(() => {
-    const hints = createHintMode(options);
+    const hints = createLinkHints(options);
     return () => hints.dispose();
   }, []);
 };
 
 // In your root layout:
 const App = () => {
-  useHintMode();
+  useLinkHints();
   return <YourApp />;
 };
 ```
@@ -108,15 +108,15 @@ const App = () => {
 ### Vue 3
 
 ```ts
-// composables/useHintMode.ts
+// composables/useLinkHints.ts
 import { onMounted, onBeforeUnmount } from 'vue';
-import { createHintMode, type HintModeOptions } from '@sannagroup/hint-mode';
-import '@sannagroup/hint-mode/style.css';
+import { createLinkHints, type LinkHintsOptions } from '@sannagroup/link-hints';
+import '@sannagroup/link-hints/style.css';
 
-export const useHintMode = (options?: HintModeOptions) => {
-  let handle: ReturnType<typeof createHintMode> | undefined;
+export const useLinkHints = (options?: LinkHintsOptions) => {
+  let handle: ReturnType<typeof createLinkHints> | undefined;
   onMounted(() => {
-    handle = createHintMode(options);
+    handle = createLinkHints(options);
   });
   onBeforeUnmount(() => {
     handle?.dispose();
@@ -128,12 +128,12 @@ export const useHintMode = (options?: HintModeOptions) => {
 
 ```tsx
 import { onMount, onCleanup } from 'solid-js';
-import { createHintMode, type HintModeOptions } from '@sannagroup/hint-mode';
-import '@sannagroup/hint-mode/style.css';
+import { createLinkHints, type LinkHintsOptions } from '@sannagroup/link-hints';
+import '@sannagroup/link-hints/style.css';
 
-export const HintMode = (props: HintModeOptions) => {
+export const LinkHints = (props: LinkHintsOptions) => {
   onMount(() => {
-    const hints = createHintMode(props);
+    const hints = createLinkHints(props);
     onCleanup(() => hints.dispose());
   });
   return null;
@@ -143,15 +143,15 @@ export const HintMode = (props: HintModeOptions) => {
 ### Web Components
 
 ```ts
-import { createHintMode } from '@sannagroup/hint-mode';
-import styles from '@sannagroup/hint-mode/style.css?raw';
+import { createLinkHints } from '@sannagroup/link-hints';
+import styles from '@sannagroup/link-hints/style.css?raw';
 
-class HintModeElement extends HTMLElement {
-  private handle: ReturnType<typeof createHintMode> | undefined;
+class LinkHintsElement extends HTMLElement {
+  private handle: ReturnType<typeof createLinkHints> | undefined;
 
   connectedCallback() {
     document.head.insertAdjacentHTML('beforeend', `<style>${styles}</style>`);
-    this.handle = createHintMode();
+    this.handle = createLinkHints();
   }
 
   disconnectedCallback() {
@@ -159,8 +159,8 @@ class HintModeElement extends HTMLElement {
   }
 }
 
-customElements.define('hint-mode', HintModeElement);
-// <hint-mode></hint-mode>
+customElements.define('link-hints', LinkHintsElement);
+// <link-hints></link-hints>
 ```
 
 ## Usage recipes
@@ -180,22 +180,22 @@ The label space adapts so no auto-assigned label collides with a pinned one.
 ### 2. Custom activation key
 
 ```ts
-createHintMode({ activationKey: 'g' });
+createLinkHints({ activationKey: 'g' });
 ```
 
 ### 3. Scope hints to a specific subtree
 
 ```ts
 const panel = document.querySelector<HTMLElement>('#side-panel')!;
-createHintMode({ root: panel });
+createLinkHints({ root: panel });
 ```
 
 ### 4. Custom click handler (analytics, modifiers, etc.)
 
 ```ts
-import { createHintMode, performTargetAction } from '@sannagroup/hint-mode';
+import { createLinkHints, performTargetAction } from '@sannagroup/link-hints';
 
-createHintMode({
+createLinkHints({
   onActivate: (target) => {
     analytics.track('hint_used', { id: target.id });
     performTargetAction(target); // delegate to the default click sequence
@@ -211,7 +211,7 @@ const PIN_BY_HREF: Record<string, string> = {
   '/members': 'ME'
 };
 
-createHintMode({
+createLinkHints({
   pinnedHint: (element) => {
     if (element instanceof HTMLAnchorElement) {
       return PIN_BY_HREF[new URL(element.href).pathname];
@@ -224,7 +224,7 @@ createHintMode({
 ### 6. Force-include or exclude specific elements
 
 ```ts
-createHintMode({
+createLinkHints({
   isClickable: (element) => {
     if (element.classList.contains('skip-hint')) return false;
     if (element.classList.contains('force-hint')) return true;
@@ -236,7 +236,7 @@ createHintMode({
 ### 7. React to state changes
 
 ```ts
-const hints = createHintMode();
+const hints = createLinkHints();
 
 const unsubscribe = hints.subscribe((state) => {
   if (state.status === 'active') {
@@ -250,7 +250,7 @@ const unsubscribe = hints.subscribe((state) => {
 ### 8. Force-activate from a button
 
 ```ts
-const hints = createHintMode();
+const hints = createLinkHints();
 document.querySelector('#help-button')?.addEventListener('click', () => {
   hints.activate();
 });
@@ -259,27 +259,27 @@ document.querySelector('#help-button')?.addEventListener('click', () => {
 ## Theming
 
 ```css
-.hint-mode-badge {
-  --hint-mode-bg: tomato;
-  --hint-mode-fg: white;
-  --hint-mode-ring: transparent;
-  --hint-mode-radius: 6px;
-  --hint-mode-font: 'Fira Code', monospace;
-  --hint-mode-size: 12px;
-  --hint-mode-z: 100000;
+.link-hints-badge {
+  --link-hints-bg: tomato;
+  --link-hints-fg: white;
+  --link-hints-ring: transparent;
+  --link-hints-radius: 6px;
+  --link-hints-font: 'Fira Code', monospace;
+  --link-hints-size: 12px;
+  --link-hints-z: 100000;
 }
 
-.hint-mode-badge__typed {
+.link-hints-badge__typed {
   opacity: 0.4;
 }
-.hint-mode-badge__remaining {
+.link-hints-badge__remaining {
   font-weight: 800;
 }
 ```
 
 ## API
 
-### `createHintMode(options?): HintModeHandle`
+### `createLinkHints(options?): LinkHintsHandle`
 
 | Option          | Type                           | Default                     | Description                           |
 | --------------- | ------------------------------ | --------------------------- | ------------------------------------- |
@@ -290,7 +290,7 @@ document.querySelector('#help-button')?.addEventListener('click', () => {
 | `isClickable`   | `(el) => boolean \| undefined` | —                           | Override the default heuristic.       |
 | `pinnedHint`    | `(el) => string \| undefined`  | reads `data-hint`           | Programmatic pin source.              |
 
-### `HintModeHandle`
+### `LinkHintsHandle`
 
 | Method                | Description                                        |
 | --------------------- | -------------------------------------------------- |

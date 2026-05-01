@@ -1,9 +1,9 @@
-import type { HintModeState } from './types';
+import type { LinkHintsState } from './types';
 
-const PORTAL_CLASS = 'hint-mode-portal';
-const BADGE_CLASS = 'hint-mode-badge';
-const DIMMED_CLASS = 'hint-mode-badge__typed';
-const REMAINING_CLASS = 'hint-mode-badge__remaining';
+const PORTAL_CLASS = 'link-hints-portal';
+const BADGE_CLASS = 'link-hints-badge';
+const DIMMED_CLASS = 'link-hints-badge__typed';
+const REMAINING_CLASS = 'link-hints-badge__remaining';
 
 /**
  * Renders hint badges into a portal `<div>` appended to `document.body`.
@@ -18,7 +18,7 @@ export class BadgeRenderer {
   private nodes = new Map<HTMLElement, HTMLSpanElement>();
 
   /** Apply a new state. Called by the controller's emitter. */
-  apply(state: HintModeState): void {
+  apply(state: LinkHintsState): void {
     if (state.status === 'idle') {
       this.teardown();
       return;

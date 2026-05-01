@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "hint-mode-monorepo",
+      "name": "link-hints-monorepo",
       "devDependencies": {
         "@changesets/cli": "^2.27.10",
         "prettier": "^3.4.2",
@@ -14,15 +14,15 @@
       "name": "hint-mode-vanilla-example",
       "version": "0.0.0",
       "dependencies": {
-        "@sannagroup/hint-mode": "workspace:*",
+        "@sannagroup/link-hints": "workspace:*",
       },
       "devDependencies": {
         "vite": "^6.0.0",
       },
     },
     "packages/core": {
-      "name": "@sannagroup/hint-mode",
-      "version": "0.2.0",
+      "name": "@sannagroup/link-hints",
+      "version": "0.1.0",
       "devDependencies": {
         "@types/jsdom": "^21.1.7",
         "jsdom": "^25.0.1",
@@ -196,7 +196,7 @@
 
     "@rollup/rollup-win32-x64-msvc": ["@rollup/rollup-win32-x64-msvc@4.60.2", "", { "os": "win32", "cpu": "x64" }, "sha512-Nd/SgG27WoA9e+/TdK74KnHz852TLa94ovOYySo/yMPuTmpckK/jIF2jSwS3g7ELSKXK13/cVdmg1Z/DaCWKxA=="],
 
-    "@sannagroup/hint-mode": ["@sannagroup/hint-mode@workspace:packages/core"],
+    "@sannagroup/link-hints": ["@sannagroup/link-hints@workspace:packages/core"],
 
     "@types/estree": ["@types/estree@1.0.8", "", {}, "sha512-dWHzHa2WqEXI/O1E9OjrocMTKJl2mSrEolh1Iomrv6U+JuNwaHXsXx9bLu5gG7BUWFIN0skIQJQ/L1rIex4X6w=="],
 

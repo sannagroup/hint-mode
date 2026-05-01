@@ -1,11 +1,11 @@
 /** Reactive snapshot of hint mode state. */
-export interface HintModeState {
+export interface LinkHintsState {
   status: 'idle' | 'active';
   hints: ReadonlyMap<HTMLElement, string>;
   typedPrefix: string;
 }
 
-export interface HintModeOptions {
+export interface LinkHintsOptions {
   /** Subtree to scan for clickables. Default: `document.body`. */
   root?: HTMLElement;
 
@@ -37,15 +37,15 @@ export interface HintModeOptions {
   pinnedHint?: (element: HTMLElement) => string | undefined;
 }
 
-export interface HintModeHandle {
+export interface LinkHintsHandle {
   /** Force-activate hint mode without keyboard input. No-op if already active. */
   activate(): void;
   /** Cancel an active session. No-op if already idle. */
   cancel(): void;
   /** Observe state changes. Returns an unsubscribe function. */
-  subscribe(listener: (state: HintModeState) => void): () => void;
+  subscribe(listener: (state: LinkHintsState) => void): () => void;
   /** Current snapshot. */
-  getState(): HintModeState;
+  getState(): LinkHintsState;
   /** Tear down listeners + rendered DOM. Idempotent. */
   dispose(): void;
 }

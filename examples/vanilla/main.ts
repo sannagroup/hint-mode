@@ -1,5 +1,5 @@
-import { createHintMode } from '@sannagroup/hint-mode';
-import '@sannagroup/hint-mode/style.css';
+import { createHintMode } from '@sannagroup/link-hints';
+import '@sannagroup/link-hints/style.css';
 
 const hints = createHintMode();
 

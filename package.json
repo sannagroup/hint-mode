@@ -1,8 +1,8 @@
 {
-  "name": "hint-mode-monorepo",
+  "name": "link-hints-monorepo",
   "private": true,
   "version": "0.0.0",
-  "description": "Vimium-style keyboard hint navigation for the web. Pure JS core + framework adapters.",
+  "description": "Vimium-style keyboard link-hint navigation for the web. Pure JS / TypeScript core.",
   "license": "MIT",
   "type": "module",
   "workspaces": [

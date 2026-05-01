@@ -4,18 +4,18 @@ Guidance for AI coding agents (Claude, Cursor, Aider, Codex, etc.) working in th
 
 ## What this repo is
 
-`hint-mode` is a small open-source library that ports [Vimium](https://github.com/philc/vimium)'s clickable-element detection and link-hint UX into a JavaScript/TypeScript library you can embed in any web page. Press `f`, see labels appear over every clickable element, type a label to click it.
+`link-hints` is a small open-source library that ports [Vimium](https://github.com/philc/vimium)'s clickable-element detection and link-hint UX into a JavaScript/TypeScript library you can embed in any web page. Press `f`, see labels appear over every clickable element, type a label to click it.
 
-It is published as a single npm package at `@sannagroup/hint-mode`. The package is **framework-free**: zero runtime dependencies, no UI-framework lock-in. The README shows recipes for wrapping it into Svelte / React / Vue / Solid / Web Components — those wrappers are 5–10 lines each, so we don't ship them. Less code to maintain, no peer-dep complexity, and consumers can wire it into whatever stack they're on.
+It is published as a single npm package at `@sannagroup/link-hints`. The package is **framework-free**: zero runtime dependencies, no UI-framework lock-in. The README shows recipes for wrapping it into Svelte / React / Vue / Solid / Web Components — those wrappers are 5–10 lines each, so we don't ship them. Less code to maintain, no peer-dep complexity, and consumers can wire it into whatever stack they're on.
 
 ## Repo layout
 
 ```
 hint-mode/
-├── packages/core/          → @sannagroup/hint-mode (the only published package)
+├── packages/core/          → @sannagroup/link-hints (the only published package)
 │   ├── src/
 │   │   ├── index.ts                     public exports
-│   │   ├── types.ts                     HintModeOptions, HintModeHandle, HintModeState
+│   │   ├── types.ts                     LinkHintsOptions, LinkHintsHandle, LinkHintsState
 │   │   ├── controller.ts                state machine + emitter
 │   │   ├── badge-renderer.ts            vanilla DOM rendering
 │   │   ├── click-simulator.ts           Vimium's 7-event simulateClick + performTargetAction
@@ -95,8 +95,8 @@ These are non-negotiable.
 
 ### Public API stability
 
-- The shape of `createHintMode(options)` and `HintModeHandle` is the contract. Adding new optional fields is fine. Removing or renaming requires a major bump (or a `minor` pre-1.0 with a clear migration note in the changeset).
-- The CSS class names (`.hint-mode-portal`, `.hint-mode-badge`, `.hint-mode-badge__typed`, `.hint-mode-badge__remaining`) and the documented CSS variables are part of the contract.
+- The shape of `createLinkHints(options)` and `LinkHintsHandle` is the contract. Adding new optional fields is fine. Removing or renaming requires a major bump (or a `minor` pre-1.0 with a clear migration note in the changeset).
+- The CSS class names (`.link-hints-portal`, `.link-hints-badge`, `.link-hints-badge__typed`, `.link-hints-badge__remaining`) and the documented CSS variables are part of the contract.
 - `data-hint` is part of the contract.
 
 ### Testing

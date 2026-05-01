@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { createHintMode } from '../src/index';
-import type { HintModeHandle } from '../src/index';
+import { createLinkHints } from '../src/index';
+import type { LinkHintsHandle } from '../src/index';
 
 const stubRect = (element: Element, rect: Partial<DOMRect> = {}): void => {
   (element as HTMLElement).getBoundingClientRect = (): DOMRect =>
@@ -72,8 +72,8 @@ const pressKey = (key: string): void => {
   window.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
 };
 
-describe('createHintMode', () => {
-  let hints: HintModeHandle | undefined;
+describe('createLinkHints', () => {
+  let hints: LinkHintsHandle | undefined;
 
   beforeEach(() => {
     setViewport();
@@ -88,7 +88,7 @@ describe('createHintMode', () => {
   });
 
   it('starts idle with no hints', () => {
-    hints = createHintMode();
+    hints = createLinkHints();
     expect(hints.getState()).toEqual({
       status: 'idle',
       hints: new Map(),
@@ -99,20 +99,20 @@ describe('createHintMode', () => {
   it('activates on the configured key and renders badges in a portal', () => {
     make('button', { id: 'a' }, 'A');
     make('button', { id: 'b' }, 'B');
-    hints = createHintMode();
+    hints = createLinkHints();
 
     pressKey('f');
 
     expect(hints.getState().status).toBe('active');
     expect(hints.getState().hints.size).toBe(2);
-    const portal = document.querySelector('.hint-mode-portal');
+    const portal = document.querySelector('.link-hints-portal');
     expect(portal).not.toBeNull();
-    expect(portal?.querySelectorAll('.hint-mode-badge').length).toBe(2);
+    expect(portal?.querySelectorAll('.link-hints-badge').length).toBe(2);
   });
 
   it('uses a custom activationKey', () => {
     make('button', { id: 'a' }, 'A');
-    hints = createHintMode({ activationKey: 'g' });
+    hints = createLinkHints({ activationKey: 'g' });
 
     pressKey('f');
     expect(hints.getState().status).toBe('idle');
@@ -122,7 +122,7 @@ describe('createHintMode', () => {
 
   it('respects pinnedHint option', () => {
     const button = make('button', { id: 'pin' }, 'Pin');
-    hints = createHintMode({
+    hints = createLinkHints({
       pinnedHint: (element) => (element.id === 'pin' ? 'OP' : undefined)
     });
     hints.activate();
@@ -132,7 +132,7 @@ describe('createHintMode', () => {
   it('calls onActivate with the matched element', () => {
     const button = make('button', { id: 'only' }, 'Only');
     const onActivate = vi.fn();
-    hints = createHintMode({ onActivate });
+    hints = createLinkHints({ onActivate });
     hints.activate();
     const label = hints.getState().hints.get(button);
     expect(label).toBeDefined();
@@ -145,19 +145,19 @@ describe('createHintMode', () => {
 
   it('Escape cancels', () => {
     make('button', { id: 'a' }, 'A');
-    hints = createHintMode();
+    hints = createLinkHints();
     hints.activate();
     expect(hints.getState().status).toBe('active');
 
     pressKey('Escape');
 
     expect(hints.getState().status).toBe('idle');
-    expect(document.querySelector('.hint-mode-portal')).toBeNull();
+    expect(document.querySelector('.link-hints-portal')).toBeNull();
   });
 
   it('cancels on scroll', () => {
     make('button', { id: 'a' }, 'A');
-    hints = createHintMode();
+    hints = createLinkHints();
     hints.activate();
     window.dispatchEvent(new Event('scroll'));
     expect(hints.getState().status).toBe('idle');
@@ -165,7 +165,7 @@ describe('createHintMode', () => {
 
   it('subscribe receives state changes and unsubscribe stops them', () => {
     make('button', { id: 'a' }, 'A');
-    hints = createHintMode();
+    hints = createLinkHints();
     const listener = vi.fn();
     const unsubscribe = hints.subscribe(listener);
 
@@ -180,22 +180,22 @@ describe('createHintMode', () => {
 
   it('dispose tears down listeners and the portal', () => {
     make('button', { id: 'a' }, 'A');
-    hints = createHintMode();
+    hints = createLinkHints();
     hints.activate();
-    expect(document.querySelector('.hint-mode-portal')).not.toBeNull();
+    expect(document.querySelector('.link-hints-portal')).not.toBeNull();
 
     hints.dispose();
     hints = undefined;
 
-    expect(document.querySelector('.hint-mode-portal')).toBeNull();
+    expect(document.querySelector('.link-hints-portal')).toBeNull();
     pressKey('f');
     // No new portal should appear after dispose.
-    expect(document.querySelector('.hint-mode-portal')).toBeNull();
+    expect(document.querySelector('.link-hints-portal')).toBeNull();
   });
 
   it('isClickable override forces an element to be hinted', () => {
     const span = make('span', { id: 'spanny' }, 'span');
-    hints = createHintMode({
+    hints = createLinkHints({
       isClickable: (element) => (element.id === 'spanny' ? true : undefined)
     });
     hints.activate();

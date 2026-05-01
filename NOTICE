@@ -2,7 +2,7 @@ hint-mode
 =========
 
 Portions of the clickable-element detection and click-simulation logic in
-`@sannagroup/hint-mode` are derived from Vimium:
+`@sannagroup/link-hints` are derived from Vimium:
 
   https://github.com/philc/vimium
   Licensed under the MIT License.
