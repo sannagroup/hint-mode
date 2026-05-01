@@ -1,6 +1,5 @@
 ---
 "@sannagroup/hint-mode": minor
-"@sannagroup/hint-mode-svelte": minor
 ---
 
-Initial release. Vimium-style keyboard hint navigation as a vanilla-JS core plus a thin Svelte 5 adapter.
+Initial release. Vimium-style keyboard hint navigation. Vanilla-JS core plus an opt-in Svelte adapter at `@sannagroup/hint-mode/svelte`.

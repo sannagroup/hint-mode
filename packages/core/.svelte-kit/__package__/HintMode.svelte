@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { createHintMode } from '@sannagroup/hint-mode';
-  import type { HintModeHandle, HintModeOptions } from '@sannagroup/hint-mode';
+  import { createHintMode } from '../index';
+  import type { HintModeHandle, HintModeOptions } from '../types';
 
   type Props = HintModeOptions & {
     /** Forwards the underlying handle for advanced control. */

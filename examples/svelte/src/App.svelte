@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { HintMode } from '@sannagroup/hint-mode-svelte';
+  import { HintMode } from '@sannagroup/hint-mode/svelte';
 </script>
 
 <main>

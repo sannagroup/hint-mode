@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "@sannagroup/hint-mode": "workspace:*",
-    "@sannagroup/hint-mode-svelte": "workspace:*",
     "svelte": "^5.16.0"
   },
   "devDependencies": {

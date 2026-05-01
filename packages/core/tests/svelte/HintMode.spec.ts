@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { render } from '@testing-library/svelte';
-import HintMode from '../src/lib/HintMode.svelte';
+import HintMode from '../../src/svelte/HintMode.svelte';
 
 describe('<HintMode />', () => {
   beforeEach(() => {
@@ -12,7 +12,7 @@ describe('<HintMode />', () => {
     document.body.replaceChildren();
   });
 
-  it('mounts without throwing and tears down on unmount', () => {
+  it('mounts and tears down on unmount', () => {
     const button = document.createElement('button');
     button.textContent = 'Hello';
     document.body.appendChild(button);
