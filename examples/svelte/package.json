@@ -1,0 +1,19 @@
+{
+  "name": "hint-mode-svelte-example",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@sannagroup/hint-mode": "workspace:*",
+    "@sannagroup/hint-mode-svelte": "workspace:*",
+    "svelte": "^5.16.0"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^5.0.0",
+    "vite": "^6.0.0"
+  }
+}

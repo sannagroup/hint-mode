@@ -1,0 +1,48 @@
+/*
+ * @sannagroup/hint-mode default theme.
+ * Override any CSS variable below to re-skin the badges.
+ */
+
+.hint-mode-portal {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: var(--hint-mode-z, 9999);
+}
+
+.hint-mode-badge {
+  --hint-mode-bg: oklch(0.66 0.18 39); /* tailwind orange-600 */
+  --hint-mode-fg: white;
+  --hint-mode-ring: rgba(124, 45, 18, 0.4);
+  --hint-mode-radius: 0.125rem;
+  --hint-mode-font: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --hint-mode-size: 10px;
+
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 4px;
+  font-family: var(--hint-mode-font);
+  font-size: var(--hint-mode-size);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--hint-mode-fg);
+  background: var(--hint-mode-bg);
+  border-radius: var(--hint-mode-radius);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  outline: 1px solid var(--hint-mode-ring);
+  user-select: none;
+  transform: translate(-4px, -50%);
+  white-space: nowrap;
+}
+
+.hint-mode-badge__typed {
+  opacity: 0.5;
+}
+
+.hint-mode-badge__remaining {
+  font-weight: 700;
+}

@@ -1,0 +1,14 @@
+hint-mode
+=========
+
+Portions of the clickable-element detection and click-simulation logic in
+`@sannagroup/hint-mode` are derived from Vimium:
+
+  https://github.com/philc/vimium
+  Licensed under the MIT License.
+  Copyright (c) Phil Crosby and Vimium contributors.
+
+Specifically, the rules in `clickable-elements.ts` mirror Vimium's
+`getLocalHintsForElement` (`content_scripts/link_hints.js`), and the
+seven-event simulated-click sequence in `click-simulator.ts` mirrors
+Vimium's `simulateClick` (`lib/dom_utils.js`).
