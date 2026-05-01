@@ -1,7 +1,7 @@
 {
   "name": "@sannagroup/hint-mode",
   "version": "0.2.0",
-  "description": "Vimium-style keyboard hint navigation for any web page. Pure JS core + optional Svelte adapter via subpath.",
+  "description": "Vimium-style keyboard hint navigation for any web page. Pure JS / TypeScript, framework-free.",
   "license": "MIT",
   "type": "module",
   "files": [
@@ -17,15 +17,10 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
-    "./svelte": {
-      "types": "./dist/svelte/index.d.ts",
-      "svelte": "./dist/svelte/index.js",
-      "import": "./dist/svelte/index.js"
-    },
     "./style.css": "./dist/style.css"
   },
   "scripts": {
-    "build": "rm -rf dist && tsc -p tsconfig.build.json && svelte-package -i src/svelte -o dist/svelte && bun scripts/emit-svelte-types.ts && cp src/style.css dist/style.css",
+    "build": "rm -rf dist && tsc -p tsconfig.build.json && cp src/style.css dist/style.css",
     "test": "vitest run",
     "typecheck": "tsc -p tsconfig.json"
   },
@@ -35,8 +30,7 @@
     "hint",
     "accessibility",
     "navigation",
-    "shortcuts",
-    "svelte"
+    "shortcuts"
   ],
   "repository": {
     "type": "git",
@@ -47,24 +41,10 @@
   "publishConfig": {
     "access": "public"
   },
-  "peerDependencies": {
-    "svelte": "^5.0.0"
-  },
-  "peerDependenciesMeta": {
-    "svelte": {
-      "optional": true
-    }
-  },
   "devDependencies": {
-    "@sveltejs/package": "^2.3.7",
-    "@sveltejs/vite-plugin-svelte": "^5.0.0",
-    "@testing-library/svelte": "^5.2.6",
     "@types/jsdom": "^21.1.7",
     "jsdom": "^25.0.1",
-    "svelte": "^5.16.0",
-    "svelte-check": "^4.1.1",
     "typescript": "^5.7.2",
-    "vite": "^6.0.0",
     "vitest": "^2.1.8"
   }
 }

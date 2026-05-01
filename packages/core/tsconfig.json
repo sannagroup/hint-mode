@@ -3,6 +3,5 @@
   "compilerOptions": {
     "noEmit": true
   },
-  "include": ["src/**/*", "tests/**/*"],
-  "exclude": ["src/svelte/**/*"]
+  "include": ["src/**/*", "tests/**/*"]
 }
