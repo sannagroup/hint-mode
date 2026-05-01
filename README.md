@@ -331,6 +331,10 @@ What we changed:
 
 **Hint mode triggers in code editors / Monaco / CodeMirror.** Use `isClickable` returning `false` for the editor's container.
 
+## Contributing
+
+See [`CONTRIBUTING.md`](./CONTRIBUTING.md) for setup, style, testing, and the release process.
+
 ## Acknowledgements
 
 Detection rules and the click-simulation event sequence are ported from [Vimium](https://github.com/philc/vimium) (MIT). See [`NOTICE`](NOTICE).
