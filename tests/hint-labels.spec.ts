@@ -97,6 +97,8 @@ describe('assignHintLabels', () => {
 
   it('throws when there are more elements than possible labels', () => {
     const elements = makeButtons(Array.from({ length: 9 }, (_v, i) => `b${i}`));
-    expect(() => assignHintLabels(elements, { hintChars: 'ab' })).toThrow(/ran out of hint labels/i);
+    expect(() => assignHintLabels(elements, { hintChars: 'ab' })).toThrow(
+      /ran out of hint labels/i
+    );
   });
 });
