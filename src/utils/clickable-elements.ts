@@ -174,9 +174,12 @@ interface Candidate {
   evaluation: ClickableEvaluation;
 }
 
-// Ported from vimium/content_scripts/link_hints.js#getAllElements: walks open
-// shadow roots so components built on web components (Lit, Stencil, Shoelace,
-// any `<sl-button>`-style wrapper) still get hinted.
+/**
+ * Walks open shadow roots so components built on web components (Lit,
+ * Stencil, Shoelace, any `<sl-button>`-style wrapper) still get hinted.
+ *
+ * Ported from `vimium/content_scripts/link_hints.js#getAllElements`.
+ */
 const getAllElementsIncludingShadowRoots = (root: ParentNode): HTMLElement[] => {
   const collected: HTMLElement[] = [];
   for (const element of Array.from(root.querySelectorAll<HTMLElement>('*'))) {
