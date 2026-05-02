@@ -179,11 +179,25 @@ interface Candidate {
  * intersect the viewport. The detection rules and false-positive / tabindex
  * filtering follow Vimium's `getLocalHintsForElement` algorithm.
  */
+// Ported from vimium/content_scripts/link_hints.js#getAllElements: walks open
+// shadow roots so components built on web components (Lit, Stencil, Shoelace,
+// any `<sl-button>`-style wrapper) still get hinted.
+const getAllElementsIncludingShadowRoots = (root: ParentNode): HTMLElement[] => {
+  const collected: HTMLElement[] = [];
+  for (const element of Array.from(root.querySelectorAll<HTMLElement>('*'))) {
+    collected.push(element);
+    if (element.shadowRoot) {
+      collected.push(...getAllElementsIncludingShadowRoots(element.shadowRoot));
+    }
+  }
+  return collected;
+};
+
 export const findClickableElements = (
   root: HTMLElement,
   override?: (element: HTMLElement) => boolean | undefined
 ): HTMLElement[] => {
-  const all = Array.from(root.querySelectorAll<HTMLElement>('*'));
+  const all = getAllElementsIncludingShadowRoots(root);
 
   const candidates: Candidate[] = [];
   for (const element of all) {
