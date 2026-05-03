@@ -1,7 +1,5 @@
+import { DEFAULT_HINT_CHARS } from '../constants.js';
 import { getStableElementKey } from './stable-element-key.js';
-
-/** Vimium's home-row-weighted character set. Alphabetic only so digit input never collides. */
-export const DEFAULT_HINT_CHARS = 'sadfjklewcmpgh';
 
 const isReserved = (candidate: string, reservedLabels: ReadonlySet<string>): boolean => {
   // Candidate is reserved if it equals a reserved label, or shares a prefix

@@ -1,4 +1,5 @@
 import { BadgeRenderer } from './badge-renderer.js';
+import { DEFAULT_ACTIVATION_KEY, DEFAULT_HINT_CHARS } from './constants.js';
 import { LinkHints, defaultOnActivate } from './link-hints.js';
 import type { LinkHintsHandle, LinkHintsOptions, LinkHintsState } from './types.js';
 
@@ -9,8 +10,8 @@ const defaultIsClickable = (): boolean | undefined => undefined;
 
 const resolveOptions = (options: LinkHintsOptions = {}): Required<LinkHintsOptions> => ({
   root: options.root ?? document.body,
-  activationKey: options.activationKey ?? 'f',
-  hintChars: options.hintChars ?? 'sadfjklewcmpgh',
+  activationKey: options.activationKey ?? DEFAULT_ACTIVATION_KEY,
+  hintChars: options.hintChars ?? DEFAULT_HINT_CHARS,
   onActivate: options.onActivate ?? defaultOnActivate,
   isClickable: options.isClickable ?? defaultIsClickable,
   pinnedHint: options.pinnedHint ?? defaultPinnedHint
@@ -45,6 +46,14 @@ export const createLinkHints = (options: LinkHintsOptions = {}): LinkHintsHandle
 export type { LinkHintsHandle, LinkHintsOptions, LinkHintsState };
 export { simulateClick, performTargetAction } from './utils/click-simulator.js';
 export { findClickableElements } from './utils/clickable-elements.js';
-export { assignHintLabels, DEFAULT_HINT_CHARS, resolveHintChars } from './utils/hint-labels.js';
+export {
+  BADGE_CLASS,
+  DEFAULT_ACTIVATION_KEY,
+  DEFAULT_HINT_CHARS,
+  PORTAL_CLASS,
+  REMAINING_CLASS,
+  TYPED_CLASS
+} from './constants.js';
+export { assignHintLabels, resolveHintChars } from './utils/hint-labels.js';
 export type { HintCharsOption } from './utils/hint-labels.js';
 export { getStableElementKey } from './utils/stable-element-key.js';

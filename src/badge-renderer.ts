@@ -1,9 +1,5 @@
+import { BADGE_CLASS, PORTAL_CLASS, REMAINING_CLASS, TYPED_CLASS } from './constants.js';
 import type { LinkHintsState } from './types.js';
-
-const PORTAL_CLASS = 'link-hints-portal';
-const BADGE_CLASS = 'link-hints-badge';
-const DIMMED_CLASS = 'link-hints-badge__typed';
-const REMAINING_CLASS = 'link-hints-badge__remaining';
 
 /**
  * Renders hint badges into a portal `<div>` appended to `document.body`.
@@ -89,10 +85,10 @@ export class BadgeRenderer {
     badge.style.left = `${rect.left + window.scrollX}px`;
     badge.replaceChildren();
     if (typed) {
-      const dimmed = document.createElement('span');
-      dimmed.className = DIMMED_CLASS;
-      dimmed.textContent = typed;
-      badge.appendChild(dimmed);
+      const typedSpan = document.createElement('span');
+      typedSpan.className = TYPED_CLASS;
+      typedSpan.textContent = typed;
+      badge.appendChild(typedSpan);
     }
     const remaining = document.createElement('span');
     remaining.className = REMAINING_CLASS;
