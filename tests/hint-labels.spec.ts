@@ -1,5 +1,6 @@
 import { describe, expect, it, beforeEach } from 'vitest';
-import { assignHintLabels, resolveHintChars, DEFAULT_HINT_CHARS } from '../src/utils/hint-labels';
+import { assignHintLabels, resolveHintChars } from '../src/utils/hint-labels';
+import { DEFAULT_HINT_CHARS } from '../src/constants';
 
 const makeButtons = (texts: string[]): HTMLElement[] =>
   texts.map((text) => {
